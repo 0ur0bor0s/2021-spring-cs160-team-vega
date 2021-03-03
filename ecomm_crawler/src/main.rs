@@ -33,7 +33,7 @@ fn conv_to_item_content(node: node::Node) -> Option<ItemContent> {
     let buy_link = node
         .find(And(Name("a"), Class("s-item__link")))
         .filter_map(|n| n.attr("href"))
-        //.filter_map(normalize_url)
+        .filter_map(normalize_url)
         .next();
     
     //   println!("{}\n", buy_link.unwrap());
@@ -53,7 +53,7 @@ fn conv_to_item_content(node: node::Node) -> Option<ItemContent> {
         .next()
         .unwrap()
         .children()
-        .filter_map(|n| n.as_text())
+        .flat_map(|n| n.as_text())
         .next();
 
     //  println!("{}\n", price_str.unwrap());
