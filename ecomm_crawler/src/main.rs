@@ -69,8 +69,9 @@ fn conv_to_item_content(node: node::Node) -> Option<ItemContent> {
     if buy_link.is_some() && name.is_some() && price_str.is_some() && img_link.is_some() {
         // Convert price from string to price
         let price = FromStr::from_str(price_str.unwrap()
-                                                                        .split("$")
-                                                                        .collect::<Vec<&str>>()[1]);
+            .split("$")
+            .collect::<Vec<&str>>()[1]);
+
         match price {
             Ok(price) => { 
                 Some(ItemContent {
@@ -109,6 +110,7 @@ fn extract_content(html: &str) -> Vec<ItemContent> {
         .collect::<Vec<ItemContent>>()
 }
 
+/// Convert objects to one json string
 fn structs_to_json(contents: &Vec<ItemContent>) -> String {
     let mut json_payload: String = "[".to_owned();
 
