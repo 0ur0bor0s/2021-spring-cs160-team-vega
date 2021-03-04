@@ -2,10 +2,10 @@ use std::{io::Read, str::FromStr, env, fs::OpenOptions, io::prelude::*};
 use select::document::Document;
 use select::predicate::{Name, And, Class};
 use select::node;
+use std::fmt;
 use reqwest::Url;
 use serde::{Serialize, Deserialize};
-use mongodb;
-
+use mongodb::{Client, options::ClientOptions, bson::doc};
 
 /// Data structure to hold item details
 #[derive(Serialize, Deserialize, Debug)]
@@ -14,6 +14,17 @@ struct ItemContent {
     name: String,
     price: f32,
     img_link: String
+}
+
+impl fmt::Display for ItemContent {
+    // This trait requires `fmt` with this exact signature.
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        // Write strictly the first element into the supplied output
+        // stream: `f`. Returns `fmt::Result` which indicates whether the
+        // operation succeeded or failed. Note that `write!` uses syntax which
+        // is very similar to `println!`.
+        return write!(f, "{}", self.name);
+    }
 }
 
 /// Parse url and make sure that it is of valid format
@@ -126,7 +137,9 @@ fn structs_to_json(contents: &Vec<ItemContent>) -> String {
     json_payload
 }
 
-fn main() -> std::io::Result<()> {
+
+#[actix_rt::main]
+async fn main() -> std::io::Result<()> {
     let args: Vec<String> = env::args().collect();
 
     // Return if there are not 2 arguments 
@@ -160,17 +173,37 @@ fn main() -> std::io::Result<()> {
         
     }
 
-    // Convert to json and write to file
-    let payload: String = structs_to_json(&item_vec);
-    //let payload = mongodb::bson::to_bson(&item_vec);
-    
+    // Convert to json and write to file    
+    //let payload: String = structs_to_json(&item_vec);
+
+    //Establish connection to db and write documents to ebay-items
+    let client = Client::with_uri_str("mongodb+srv://ScraperUser:F70vBi0jVsFPF5je@cluster0.sdafj.mongodb.net/items?retryWrites=true&w=majority").await.unwrap();
+    let database = client.database("items");
+    let collection = database.collection("ebay-items");
+
+    let mut docs = vec![];
+
+    for item in item_vec {
+        docs.push(doc! {
+            "buy_link": item.buy_link,
+            "name": item.name,
+            "price": item.price,
+            "img_link": item.img_link
+        });
+    }
+
+    let insert_result = collection.insert_many(docs, None).await;
+
+    println!("{:#?}", insert_result);
+
+
     // Write to file
-    let mut file = OpenOptions::new()
+    /*let mut file = OpenOptions::new()
         .write(true)
         .create(true)
         .truncate(true)
         .open("results.json")?;
-    file.write_all(payload.as_bytes())?;
+    file.write_all(payload.as_bytes())?;*/
 
     Ok(())
 }
