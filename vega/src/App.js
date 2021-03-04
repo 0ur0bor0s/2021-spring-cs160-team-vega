@@ -2,6 +2,27 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 //import './App.css';
 
+class SearchForm extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      keyword: '',
+      numPages: 2
+    };
+
+    this.handleChange() {
+      this.setState({value: event.target.keyword});
+      this.setState({numPages: event.target.numPages});
+    }
+
+    handleSubmit() {
+      console.log('Search submitted to backend');
+      event.preventDefault();
+    }
+  }
+}
+
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -20,6 +41,7 @@ class App extends Component {
   }
 
   render() {
+   // const apiReponse = this.state;
     return (
       <div className="App">
         <header className="App-header">
@@ -36,7 +58,8 @@ class App extends Component {
             Learn React
           </a>
         </header>
-        <p className="App-intro"> {this.state.apiReponse}</p>
+        <p className="App-intro">{this.state.apiResponse}</p>
+        <p>next paragrph</p>
       </div>
     );
   }

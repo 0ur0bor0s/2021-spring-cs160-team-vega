@@ -122,6 +122,7 @@ fn extract_content(html: &str) -> Vec<ItemContent> {
 }
 
 /// Convert objects to one json string
+#[allow(dead_code)]
 fn structs_to_json(contents: &Vec<ItemContent>) -> String {
     let mut json_payload: String = "[".to_owned();
 
