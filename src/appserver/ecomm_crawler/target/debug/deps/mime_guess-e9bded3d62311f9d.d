@@ -1,0 +1,12 @@
+C:\Users\Jalend\Desktop\CS 160 - Software Engineering\proj\src\appserver\ecomm_crawler\target\debug\deps\mime_guess-e9bded3d62311f9d.rmeta: C:\Users\Jalend\.cargo\registry\src\github.com-1ecc6299db9ec823\mime_guess-2.0.3\src\lib.rs C:\Users\Jalend\.cargo\registry\src\github.com-1ecc6299db9ec823\mime_guess-2.0.3\src\impl_bin_search.rs C:\Users\Jalend\.cargo\registry\src\github.com-1ecc6299db9ec823\mime_guess-2.0.3\src\mime_types.rs C:\Users\Jalend\Desktop\CS\ 160\ -\ Software\ Engineering\proj\src\appserver\ecomm_crawler\target\debug\build\mime_guess-34d7ebc68ed731d9\out/mime_types_generated.rs
+
+C:\Users\Jalend\Desktop\CS 160 - Software Engineering\proj\src\appserver\ecomm_crawler\target\debug\deps\libmime_guess-e9bded3d62311f9d.rlib: C:\Users\Jalend\.cargo\registry\src\github.com-1ecc6299db9ec823\mime_guess-2.0.3\src\lib.rs C:\Users\Jalend\.cargo\registry\src\github.com-1ecc6299db9ec823\mime_guess-2.0.3\src\impl_bin_search.rs C:\Users\Jalend\.cargo\registry\src\github.com-1ecc6299db9ec823\mime_guess-2.0.3\src\mime_types.rs C:\Users\Jalend\Desktop\CS\ 160\ -\ Software\ Engineering\proj\src\appserver\ecomm_crawler\target\debug\build\mime_guess-34d7ebc68ed731d9\out/mime_types_generated.rs
+
+C:\Users\Jalend\Desktop\CS 160 - Software Engineering\proj\src\appserver\ecomm_crawler\target\debug\deps\mime_guess-e9bded3d62311f9d.d: C:\Users\Jalend\.cargo\registry\src\github.com-1ecc6299db9ec823\mime_guess-2.0.3\src\lib.rs C:\Users\Jalend\.cargo\registry\src\github.com-1ecc6299db9ec823\mime_guess-2.0.3\src\impl_bin_search.rs C:\Users\Jalend\.cargo\registry\src\github.com-1ecc6299db9ec823\mime_guess-2.0.3\src\mime_types.rs C:\Users\Jalend\Desktop\CS\ 160\ -\ Software\ Engineering\proj\src\appserver\ecomm_crawler\target\debug\build\mime_guess-34d7ebc68ed731d9\out/mime_types_generated.rs
+
+C:\Users\Jalend\.cargo\registry\src\github.com-1ecc6299db9ec823\mime_guess-2.0.3\src\lib.rs:
+C:\Users\Jalend\.cargo\registry\src\github.com-1ecc6299db9ec823\mime_guess-2.0.3\src\impl_bin_search.rs:
+C:\Users\Jalend\.cargo\registry\src\github.com-1ecc6299db9ec823\mime_guess-2.0.3\src\mime_types.rs:
+C:\Users\Jalend\Desktop\CS\ 160\ -\ Software\ Engineering\proj\src\appserver\ecomm_crawler\target\debug\build\mime_guess-34d7ebc68ed731d9\out/mime_types_generated.rs:
+
+# env-dep:OUT_DIR=C:\\Users\\Jalend\\Desktop\\CS 160 - Software Engineering\\proj\\src\\appserver\\ecomm_crawler\\target\\debug\\build\\mime_guess-34d7ebc68ed731d9\\out

@@ -1,0 +1,11 @@
+C:\Users\Jalend\Desktop\CS 160 - Software Engineering\proj\src\appserver\ecomm_crawler\target\release\deps\ppv_lite86-26d084a930925802.rmeta: C:\Users\Jalend\.cargo\registry\src\github.com-1ecc6299db9ec823\ppv-lite86-0.2.10\src\lib.rs C:\Users\Jalend\.cargo\registry\src\github.com-1ecc6299db9ec823\ppv-lite86-0.2.10\src\soft.rs C:\Users\Jalend\.cargo\registry\src\github.com-1ecc6299db9ec823\ppv-lite86-0.2.10\src\types.rs C:\Users\Jalend\.cargo\registry\src\github.com-1ecc6299db9ec823\ppv-lite86-0.2.10\src\x86_64\mod.rs C:\Users\Jalend\.cargo\registry\src\github.com-1ecc6299db9ec823\ppv-lite86-0.2.10\src\x86_64\sse2.rs
+
+C:\Users\Jalend\Desktop\CS 160 - Software Engineering\proj\src\appserver\ecomm_crawler\target\release\deps\libppv_lite86-26d084a930925802.rlib: C:\Users\Jalend\.cargo\registry\src\github.com-1ecc6299db9ec823\ppv-lite86-0.2.10\src\lib.rs C:\Users\Jalend\.cargo\registry\src\github.com-1ecc6299db9ec823\ppv-lite86-0.2.10\src\soft.rs C:\Users\Jalend\.cargo\registry\src\github.com-1ecc6299db9ec823\ppv-lite86-0.2.10\src\types.rs C:\Users\Jalend\.cargo\registry\src\github.com-1ecc6299db9ec823\ppv-lite86-0.2.10\src\x86_64\mod.rs C:\Users\Jalend\.cargo\registry\src\github.com-1ecc6299db9ec823\ppv-lite86-0.2.10\src\x86_64\sse2.rs
+
+C:\Users\Jalend\Desktop\CS 160 - Software Engineering\proj\src\appserver\ecomm_crawler\target\release\deps\ppv_lite86-26d084a930925802.d: C:\Users\Jalend\.cargo\registry\src\github.com-1ecc6299db9ec823\ppv-lite86-0.2.10\src\lib.rs C:\Users\Jalend\.cargo\registry\src\github.com-1ecc6299db9ec823\ppv-lite86-0.2.10\src\soft.rs C:\Users\Jalend\.cargo\registry\src\github.com-1ecc6299db9ec823\ppv-lite86-0.2.10\src\types.rs C:\Users\Jalend\.cargo\registry\src\github.com-1ecc6299db9ec823\ppv-lite86-0.2.10\src\x86_64\mod.rs C:\Users\Jalend\.cargo\registry\src\github.com-1ecc6299db9ec823\ppv-lite86-0.2.10\src\x86_64\sse2.rs
+
+C:\Users\Jalend\.cargo\registry\src\github.com-1ecc6299db9ec823\ppv-lite86-0.2.10\src\lib.rs:
+C:\Users\Jalend\.cargo\registry\src\github.com-1ecc6299db9ec823\ppv-lite86-0.2.10\src\soft.rs:
+C:\Users\Jalend\.cargo\registry\src\github.com-1ecc6299db9ec823\ppv-lite86-0.2.10\src\types.rs:
+C:\Users\Jalend\.cargo\registry\src\github.com-1ecc6299db9ec823\ppv-lite86-0.2.10\src\x86_64\mod.rs:
+C:\Users\Jalend\.cargo\registry\src\github.com-1ecc6299db9ec823\ppv-lite86-0.2.10\src\x86_64\sse2.rs:

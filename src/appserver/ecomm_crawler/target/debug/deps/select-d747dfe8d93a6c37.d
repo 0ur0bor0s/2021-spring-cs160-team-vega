@@ -1,0 +1,11 @@
+C:\Users\Jalend\Desktop\CS 160 - Software Engineering\proj\src\appserver\ecomm_crawler\target\debug\deps\select-d747dfe8d93a6c37.rmeta: C:\Users\Jalend\.cargo\registry\src\github.com-1ecc6299db9ec823\select-0.5.0\src\lib.rs C:\Users\Jalend\.cargo\registry\src\github.com-1ecc6299db9ec823\select-0.5.0\src\document.rs C:\Users\Jalend\.cargo\registry\src\github.com-1ecc6299db9ec823\select-0.5.0\src\node.rs C:\Users\Jalend\.cargo\registry\src\github.com-1ecc6299db9ec823\select-0.5.0\src\predicate.rs C:\Users\Jalend\.cargo\registry\src\github.com-1ecc6299db9ec823\select-0.5.0\src\selection.rs
+
+C:\Users\Jalend\Desktop\CS 160 - Software Engineering\proj\src\appserver\ecomm_crawler\target\debug\deps\libselect-d747dfe8d93a6c37.rlib: C:\Users\Jalend\.cargo\registry\src\github.com-1ecc6299db9ec823\select-0.5.0\src\lib.rs C:\Users\Jalend\.cargo\registry\src\github.com-1ecc6299db9ec823\select-0.5.0\src\document.rs C:\Users\Jalend\.cargo\registry\src\github.com-1ecc6299db9ec823\select-0.5.0\src\node.rs C:\Users\Jalend\.cargo\registry\src\github.com-1ecc6299db9ec823\select-0.5.0\src\predicate.rs C:\Users\Jalend\.cargo\registry\src\github.com-1ecc6299db9ec823\select-0.5.0\src\selection.rs
+
+C:\Users\Jalend\Desktop\CS 160 - Software Engineering\proj\src\appserver\ecomm_crawler\target\debug\deps\select-d747dfe8d93a6c37.d: C:\Users\Jalend\.cargo\registry\src\github.com-1ecc6299db9ec823\select-0.5.0\src\lib.rs C:\Users\Jalend\.cargo\registry\src\github.com-1ecc6299db9ec823\select-0.5.0\src\document.rs C:\Users\Jalend\.cargo\registry\src\github.com-1ecc6299db9ec823\select-0.5.0\src\node.rs C:\Users\Jalend\.cargo\registry\src\github.com-1ecc6299db9ec823\select-0.5.0\src\predicate.rs C:\Users\Jalend\.cargo\registry\src\github.com-1ecc6299db9ec823\select-0.5.0\src\selection.rs
+
+C:\Users\Jalend\.cargo\registry\src\github.com-1ecc6299db9ec823\select-0.5.0\src\lib.rs:
+C:\Users\Jalend\.cargo\registry\src\github.com-1ecc6299db9ec823\select-0.5.0\src\document.rs:
+C:\Users\Jalend\.cargo\registry\src\github.com-1ecc6299db9ec823\select-0.5.0\src\node.rs:
+C:\Users\Jalend\.cargo\registry\src\github.com-1ecc6299db9ec823\select-0.5.0\src\predicate.rs:
+C:\Users\Jalend\.cargo\registry\src\github.com-1ecc6299db9ec823\select-0.5.0\src\selection.rs:
