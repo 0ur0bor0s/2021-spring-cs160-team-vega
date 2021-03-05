@@ -5,10 +5,11 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const cors = require('cors');
 const mongoose = require('mongoose');
+const port = 3080;
 
 // Connect to MongoDB
-const url = "mongodb+srv://ScraperUser:F70vBi0jVsFPF5je@cluster0.sdafj.mongodb.net/items?retryWrites=true&w=majority";
-mongoose.connect(mongoDB, {useNewUrlParser: true, useUnifiedTopology: true});
+// const url = "mongodb+srv://ScraperUser:F70vBi0jVsFPF5je@cluster0.sdafj.mongodb.net/items?retryWrites=true&w=majority";
+// mongoose.connect(mongoDB, {useNewUrlParser: true, useUnifiedTopology: true});
 
 
 var indexRouter = require('./routes/index');
@@ -46,6 +47,10 @@ app.use(function(err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.render('error');
+});
+
+app.listen(port, function() {
+  console.log(`Server listening on port ${port}`);
 });
 
 module.exports = app;
