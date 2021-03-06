@@ -95,7 +95,7 @@ class SearchResult extends React.Component {
   // }
   
     getSearchResult(){
-      fetch("http://localhost:3080/ecomm_crawler")
+      fetch(`http://localhost:3080/ecomm_crawler`)
         .then(res => res.json())
         .then(res => {
           this.setState({buy_link: res.buy_link});
@@ -139,12 +139,10 @@ class SearchResult extends React.Component {
       return (
         <div className="SearchResult">
         {/* This needs to return data from http res */}
-          <body>
-            Product Name: {this.state.name}
+            <body>Product Name: {this.state.name}</body>
             <body><img src={this.state.img_link} /></body>
             <body>Price: {this.state.price}</body>
             <body>Buy Link: <a href={this.state.buy_link} /></body>
-          </body>
         </div>
       )
     }

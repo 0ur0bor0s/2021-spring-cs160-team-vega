@@ -11,7 +11,8 @@ const bodyParser = require('body-parser');
 
 // Connect to MongoDB
 // const url = "mongodb+srv://ScraperUser:F70vBi0jVsFPF5je@cluster0.sdafj.mongodb.net/items?retryWrites=true&w=majority";
-// mongoose.connect(mongoDB, {useNewUrlParser: true, useUnifiedTopology: true});
+// const url = "mongodb+srv://jalend:Jdindin98!@vega.gbbi0.mongodb.net/vega?";
+// mongoose.connect(url, {useNewUrlParser: true, useUnifiedTopology: true});
 
 
 var indexRouter = require('./routes/index');

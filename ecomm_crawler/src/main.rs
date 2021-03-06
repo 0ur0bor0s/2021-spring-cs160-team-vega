@@ -178,7 +178,8 @@ async fn main() -> std::io::Result<()> {
     //let payload: String = structs_to_json(&item_vec);
 
     //Establish connection to db and write documents to ebay-items
-    let client = Client::with_uri_str("mongodb+srv://ScraperUser:F70vBi0jVsFPF5je@cluster0.sdafj.mongodb.net/items?retryWrites=true&w=majority").await.unwrap();
+    // let client = Client::with_uri_str("mongodb+srv://ScraperUser:F70vBi0jVsFPF5je@cluster0.sdafj.mongodb.net/items?retryWrites=true&w=majority").await.unwrap();
+    let client = Client::with_uri_str("mongodb+srv://jalend:Jdindin98!@vega.gbbi0.mongodb.net/vega?").await.unwrap();
     let database = client.database("items");
     let collection = database.collection("ebay-items");
 

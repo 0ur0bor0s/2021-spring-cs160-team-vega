@@ -33,27 +33,27 @@ import SearchBar from './SearchBarComp.js';
 import SearchResult from './SearchResultComp.js';
 
 
-// this should be in a serparate class?
-class SearchForm extends Component {
-  constructor(props) {
-    super(props);
+// // this should be in a serparate class?
+// class SearchForm extends Component {
+//   constructor(props) {
+//     super(props);
 
-    this.state = {
-      keyword: '',
-      numPages: 2
-    }
-  }
+//     this.state = {
+//       keyword: '',
+//       numPages: 2
+//     }
+//   }
 
-  handleChange(event) {
-    this.setState({value: event.target.keyword});
-    this.setState({numPages: event.target.numPages});
-  }
+//   handleChange(event) {
+//     this.setState({value: event.target.keyword});
+//     this.setState({numPages: event.target.numPages});
+//   }
 
-  handleSubmit(event) {
-    console.log('Search submitted to backend');
-    event.preventDefault();
-  }
-}
+//   handleSubmit(event) {
+//     console.log('Search submitted to backend');
+//     event.preventDefault();
+//   }
+// }
 
 
 /* 
@@ -61,23 +61,25 @@ class SearchForm extends Component {
   Will reformat later -- current use for feasibility prototype.
 */
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { apiReponse: '' };
-  }
-  
-  callAPI() {
-    fetch("http://localhost:9000/testAPI")
-        .then(res => res.text())
-        .then(res => this.setState({ apiResponse: res }))
-        .catch(err => err);
-  }
-  
-  componentDidMount() {
-    this.callAPI();
-  }
 
-  // **** DEFAULT **** //
+    // **** DEFAULT **** //
+
+  // constructor(props) {
+  //   super(props);
+  //   this.state = { apiReponse: '' };
+  // }
+  
+
+  // callAPI() {
+  //   fetch("http://localhost:9000/testAPI")
+  //       .then(res => res.text())
+  //       .then(res => this.setState({ apiResponse: res }))
+  //       .catch(err => err);
+  // }
+  
+  // componentDidMount() {
+  //   this.callAPI();
+  // }
 
 //   render() {
 //    // const apiReponse = this.state;
@@ -107,6 +109,11 @@ class App extends Component {
 
 
 // **** FOR FEASIBILITY PROTOTYPE **** //
+    constructor(props) {
+      super(props);
+      this.state = { item: ''}
+    }
+
     render() {
       return (
         <div className="App">
