@@ -81,10 +81,10 @@ class SearchResult extends React.Component {
 
       // currently holds one item retrieved from the web crawl search stored in db
       this.state = {
-          buyLink: "",
+          buy_link: "",
           name: "",
           price: "",
-          imgLink: ""
+          img_link: ""
       }
       this.getSearchResult = this.getSearchResult.bind(this);
     }
@@ -98,10 +98,10 @@ class SearchResult extends React.Component {
       fetch("http://localhost:3080/ecomm_crawler")
         .then(res => res.json())
         .then(res => {
-          this.setState({buyLink: res.buyLink});
+          this.setState({buy_link: res.buy_link});
           this.setState({name: res.name});
           this.setState({price: res.price});
-          this.setState({imgLink: res.imgLink});
+          this.setState({img_link: res.img_link});
         })
         .catch(err => err);
     }
@@ -141,9 +141,9 @@ class SearchResult extends React.Component {
         {/* This needs to return data from http res */}
           <body>
             Product Name: {this.state.name}
-            <body><img src={this.state.imgLink} /></body>
+            <body><img src={this.state.img_link} /></body>
             <body>Price: {this.state.price}</body>
-            <body>Buy Link: <a href={this.state.imgLink} /></body>
+            <body>Buy Link: <a href={this.state.buy_link} /></body>
           </body>
         </div>
       )

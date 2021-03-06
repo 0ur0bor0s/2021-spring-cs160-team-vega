@@ -17,7 +17,7 @@ class SearchBar extends React.Component {
     render() {
         return (
             <div className="SearchBar" >
-                <form action="/ecomm_crawler" method="GET">
+                <form action="/ecomm_crawler" method="POST">
                     {/*
                         For now, this will send an http req to ecomm_crawler.
                         Will make a search route later:
