@@ -1,0 +1,4 @@
+databases/mongodb
+appserver/node_modules
+appserver/ecomm_crawler/target/debug/
+appserver/ecomm_crawler/target/release/
