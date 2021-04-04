@@ -1,2 +1,0 @@
-cargo:rustc-env=TYPENUM_BUILD_CONSTS=C:\Users\Jalend\Desktop\CS 160 - Software Engineering\proj\src\appserver\ecomm_crawler\target\release\build\typenum-3d4b50784049faa8\out\consts.rs
-cargo:rustc-env=TYPENUM_BUILD_OP=C:\Users\Jalend\Desktop\CS 160 - Software Engineering\proj\src\appserver\ecomm_crawler\target\release\build\typenum-3d4b50784049faa8\out\op.rs
