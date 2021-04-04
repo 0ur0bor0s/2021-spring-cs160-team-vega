@@ -1,1 +1,0 @@
-C:\Users\Jalend\Desktop\CS\ 160\ -\ Software\ Engineering\proj\src\appserver\ecomm_crawler\target\debug\ecomm_crawler.exe: C:\Users\Jalend\Desktop\CS\ 160\ -\ Software\ Engineering\proj\src\appserver\ecomm_crawler\src\main.rs
