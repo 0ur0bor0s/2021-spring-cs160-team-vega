@@ -1,8 +1,7 @@
 //import logo from './logo.svg';
 import './App.css';
 import SearchPage from './SearchPage.js';
-import Header from "./Components/Header"
-import { useHelloQuery } from "./graphql/hello";
+import Header from "./components/Header"
 import { useGetProductsQuery } from './graphql/product';
 
 //import ProductInfoContainer from './ProductListing/ProductInfoContainer'

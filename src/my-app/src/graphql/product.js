@@ -12,9 +12,7 @@ export const useGetProductsQuery = (searchStr) => {
         }
     }
     `
-
-    console.log(query)
-
+    
     return useQuery(query, {
         variables: {
             searchStr
