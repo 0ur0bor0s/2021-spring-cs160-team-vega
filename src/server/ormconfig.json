@@ -1,0 +1,46 @@
+[
+   {
+      "name": "usersDBConnection",
+      "type": "mysql",
+      "host": "localhost",
+      "port": 3306,
+      "username": "vega",
+      "password": "vega",
+      "database": "vega",
+      "synchronize": true,
+      "logging": false,
+      "entities": [
+         "src/entity/mysql/*.ts"
+      ],
+      "migrations": [
+         "src/migration/**/*.ts"
+      ],
+      "subscribers": [
+         "src/subscriber/**/*.ts"
+      ],
+      "cli": {
+         "entitiesDir": "src/entity/mysql",
+         "migrationsDir": "src/migration",
+         "subscribersDir": "src/subscriber"
+      }
+   },
+   {
+      "name": "productsDBConnection", 
+      "type": "mongodb", 
+      "host": "localhost", 
+      "port": 27017, 
+      "database": "Products", 
+      "synchronize": true, 
+      "logging": true, 
+      "entities": [ 
+         "src/entity/mongodb/*.ts" 
+      ], 
+      "migrations": [ "src/migration/**/*.ts" 
+      ], 
+      "subscribers": [ "src/subscriber/**/*.ts" 
+      ], 
+      "cli": { 
+         "entitiesDir": "src/entity/mongodb", "migrationsDir": "src/migration", "subscribersDir": "src/subscriber" 
+      } 
+   }
+]
