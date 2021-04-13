@@ -3,6 +3,7 @@ import './App.css';
 import SearchPage from './SearchPage.js';
 import Header from "./Components/Header"
 import { useGetProductsQuery } from './graphql/product';
+import AllSellerListingsContainer from './Components/SellerListing/AllSellerListingsContainer';
 
 //import ProductInfoContainer from './ProductListing/ProductInfoContainer'
 
@@ -23,7 +24,8 @@ function App() {
       {/* To view changes, make a call to your component here. 
       Comment or uncomment other components as you see fit  */}
       <Header />
-      <SearchPage />
+      {/* <SearchPage /> */}
+      <AllSellerListingsContainer />
       {/* <ProductInfoContainer /> */}
     </div>
   );
