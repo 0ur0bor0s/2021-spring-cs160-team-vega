@@ -82,6 +82,7 @@ fn conv_to_item_content(node: node::Node) -> Option<ItemContent> {
         let price = FromStr::from_str(price_str.unwrap()
             .split("$")
             .collect::<Vec<&str>>()[1]);
+        
 
         match price {
             Ok(price) => { 
@@ -122,6 +123,7 @@ fn extract_content(html: &str) -> Vec<ItemContent> {
 }
 
 /// Convert objects to one json string
+#[allow(dead_code)]
 fn structs_to_json(contents: &Vec<ItemContent>) -> String {
     let mut json_payload: String = "[".to_owned();
 
@@ -138,19 +140,16 @@ fn structs_to_json(contents: &Vec<ItemContent>) -> String {
 }
 
 
-// needs to become regular function unless node.js can call the rust exe.
-// #[actix_rt::main]
-// pub async fn main() -> std::io::Result<()> {
-#[no_mangle]
-pub extern fn crawl(search_item: &str, page_nums: u32) -> std::io::Result<()> {
-    // let args: Vec<String> = env::args().collect();
+#[actix_rt::main]
+async fn main() -> std::io::Result<()> {
+    let args: Vec<String> = env::args().collect();
 
     // Return if there are not 2 arguments 
-    // assert_eq!(args.len(), 3)u32;
+    assert_eq!(args.len(), 3);
 
     // Create url
-    // let search_item = &args[1];
-    // let page_nums: u32 = *&args[2].parse::<u32>().unwrap() - 1;
+    let search_item = &args[1];
+    let page_nums: u32 = *&args[2].parse::<u32>().unwrap() - 1;
     
     // Create client to send server requests
     let client = reqwest::blocking::Client::new();
@@ -180,17 +179,19 @@ pub extern fn crawl(search_item: &str, page_nums: u32) -> std::io::Result<()> {
     //let payload: String = structs_to_json(&item_vec);
 
     //Establish connection to db and write documents to ebay-items
-    let client = Client::with_uri_str("mongodb+srv://ScraperUser:F70vBi0jVsFPF5je@cluster0.sdafj.mongodb.net/items?retryWrites=true&w=majority").await.unwrap();
-    let database = client.database("items");
-    let collection = database.collection("ebay-items");
+    let client = Client::with_uri_str("mongodb://localhost:27017/?readPreference=primary&appname=MongoDB%20Compass&ssl=false").await.unwrap();
+    //let client = Client::with_uri_str("mongodb+srv://ben:beni10@cluster0.qgnlv.mongodb.net/myFirstDatabase?retryWrites=true&w=majority").await.unwrap();
+    let database = client.database("Products");
+    let collection = database.collection("product");
 
     let mut docs = vec![];
 
     for item in item_vec {
+        
         docs.push(doc! {
             "buy_link": item.buy_link,
-            "name": item.name,
-            "price": item.price,
+            "product_title": item.name,
+            "product_price": item.price,
             "img_link": item.img_link
         });
     }
@@ -207,21 +208,6 @@ pub extern fn crawl(search_item: &str, page_nums: u32) -> std::io::Result<()> {
         .truncate(true)
         .open("results.json")?;
     file.write_all(payload.as_bytes())?;*/
-
-
-    // #[actix_rt::main]
-    pub async fn main() -> () {
-        let args: Vec<String> = env::args().collect();
-    
-        // Return if there are not 2 arguments 
-        assert_eq!(args.len(), 3)u32;
-    
-        // Create url
-        let search_item = &args[1];
-        let page_nums: u32 = *&args[2].parse::<u32>().unwrap() - 1;
-        crawl(search_item, page_nums);
-    }
-
 
     Ok(())
 }
