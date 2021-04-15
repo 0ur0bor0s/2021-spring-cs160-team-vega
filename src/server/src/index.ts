@@ -72,7 +72,7 @@ import { ProductResolver } from "./ProductResolver";
     apolloServer.applyMiddleware({ app, cors: false})
 
     app.listen(4000, () => {
-        console.log("Express server started!")
+        console.log("Express server started -- listening on port 4000!")
     })
 
 })();
