@@ -1,4 +1,4 @@
-import { Field, ObjectType, Int} from "type-graphql";
+import { Field, ObjectType, Int } from "type-graphql";
 import {Entity, PrimaryGeneratedColumn, Column, BaseEntity} from "typeorm";
 
 /*
@@ -12,16 +12,12 @@ Field() allows us to access certain class fields
 @Entity("users")
 export class User extends BaseEntity {
     @Field(() => Int)
-    @PrimaryGeneratedColumn() 
+    @PrimaryGeneratedColumn()
     id: number;
 
     @Field()
     @Column()
     email: string;
-
-    @Field()
-    @Column()
-    username: string;
 
     @Column()
     password: string;

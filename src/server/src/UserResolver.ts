@@ -34,19 +34,6 @@ export class UserResolver {
             .find();
     }
 
-    @Query(() => User)
-    async getUserByUsername(
-        @Arg ('username', () => String) username : string
-    ) {
-        return await getConnection("usersDBConnection")
-            .getRepository(User)
-            .findOne({
-                    where: {
-                        username: username
-            }});
-    }
-
-
 
     //THIS IS FOR TESTING PURPOSES ONLY
     //Ideally we wouldn't create a mutation to revokeTokens
@@ -94,44 +81,25 @@ export class UserResolver {
         };
     }
 
+    //We use mutations when we want to update something or create something or make a change to our DB
+    @Mutation(() => Boolean)
+    async register(
+        //email inside the quotation marks is the name of the graphql argument, email is the variable name
+        @Arg('email') email: string,
+        @Arg('password') password: string,
+    ) {
+        const hashedPassword = await hash(password, 12);
 
-   //We use mutations when we want to update something or create something or make a change to our DB
-   @Mutation(() => Boolean)
-   async register(
-       //email inside the quotation marks is the name of the graphql argument, email is the variable name
-       @Arg('email') email: string,
-       @Arg('password') password: string,
-       @Arg('username') username: string,
-   ) {
-
-       const userRepository = getConnection("usersDBConnection")
-           .getRepository(User);
-
-       const userFound = await userRepository.findOne({
-           where: {
-               email
-           }
-       })
-
-       if (userFound) {
-           console.log("user already exists in database!");
-           return false;
-       }
-
-       const hashedPassword = await hash(password, 12);
-
-       try {
-           await userRepository
-               .insert({
-                   email,
-                   username,
-                   password: hashedPassword
-               });
-       } catch(err) {
-           console.log(err);
-           return false;
-       }
-       
-       return true;
-   }
+        try {
+            await User.insert({
+                email,
+                password: hashedPassword
+            });
+        } catch(err) {
+            console.log(err);
+            return false;
+        }
+        
+        return true;
+    }
 }
