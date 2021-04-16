@@ -1,7 +1,5 @@
 import React from "react";
 
-
-
 class EditListingInfoPopUp extends React.Component {
     
     // Calls the parent's (EditListingInfoContainer) toggleEditListingPop()

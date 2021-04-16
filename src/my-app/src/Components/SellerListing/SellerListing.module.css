@@ -138,8 +138,10 @@
 }
 
 .infoContainer .media {
+    grid-column-start: 1;
+    grid-row-start: 1;
     /* justify-items: start; */
-    /* grid-area: media; */
+    grid-area: media;
 } 
   
 .listing .editButton {
