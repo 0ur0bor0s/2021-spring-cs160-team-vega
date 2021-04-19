@@ -65,3 +65,23 @@ return useQuery(query, {
     }
 });
 }
+
+// export const GET_PRODUCTS_BY_PRODUCT_ID_QUERY =
+export const GET_PRODUCTS_BY_PRODUCT_ID_QUERY = (product_id) => {
+    const query = gql`
+        query getProductsByProductId($_id: String!) {    
+            getProductsByProductId(product_id: $_id) {
+                _id
+                product_title
+                product_desc
+                product_price
+                product_seller_id
+            }
+        }
+        `;
+        return useQuery(query, {
+            variables: {
+                product_id
+            }
+        });
+        }
