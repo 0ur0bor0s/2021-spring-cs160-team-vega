@@ -66,11 +66,12 @@ return useQuery(query, {
 });
 }
 
+
 // export const GET_PRODUCTS_BY_PRODUCT_ID_QUERY =
-export const GET_PRODUCTS_BY_PRODUCT_ID_QUERY = (product_id) => {
+export const GET_PRODUCT_BY_PRODUCT_ID_QUERY = (_id) => {
     const query = gql`
-        query getProductsByProductId($_id: String!) {    
-            getProductsByProductId(product_id: $_id) {
+        query getProductByProductId($_id: String!) {    
+            getProductByProductId(_id: $_id) {
                 _id
                 product_title
                 product_desc
@@ -79,9 +80,9 @@ export const GET_PRODUCTS_BY_PRODUCT_ID_QUERY = (product_id) => {
             }
         }
         `;
-        return useQuery(query, {
-            variables: {
-                product_id
-            }
-        });
+    return useQuery(query, {
+        variables: {
+            _id
         }
+    });
+}

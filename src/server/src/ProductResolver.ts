@@ -76,9 +76,24 @@ export class ProductResolver {
         return data;
     }
 
+    @Query(() => [Product])
+    async getProductByProductId (
+        @Arg('_id', () => String) _id: string
+    ) {
+        const data =  await getConnection("productsDBConnection")
+            .getMongoRepository(Product)
+            .find({
+                where: {
+                    _id: _id
+                }
+            });
+        console.log(data);
+        return data;
+    }
+
     @Mutation(() => Boolean) 
     async createNewProduct(
-        @Arg('_id') _id: string,
+        @Arg('_id') _id: String,
         @Arg('product_title') product_title: string,
         @Arg('product_desc') product_desc: string,
         @Arg('product_price') product_price: number,
@@ -104,17 +119,5 @@ export class ProductResolver {
         return true;
     }
 
-    @Query(() => [Product])
-    async getProductByProductId (
-        @Arg('_id', () => String) _id: string
-    ) {
-        return await getConnection("productsDBConnection")
-            .getMongoRepository(Product)
-            .find({
-                where: {
-                    _id: _id
-                }
-            });
-
-    }
+    
 }
