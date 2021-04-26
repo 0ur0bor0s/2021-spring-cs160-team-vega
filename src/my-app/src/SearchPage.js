@@ -5,8 +5,8 @@ import { gql, useLazyQuery } from '@apollo/client';
 
 const PRODUCT_QUERY = gql`
     query GetProduct($filter: String!) {
-        getProducts($filter: String!) {
-            product_name
+        getProducts(searchStr: $filter) {
+            product_title
         }
     }
 `;
@@ -24,7 +24,7 @@ const SearchPage = () => {
                     onChange={ (e) => setSearchFilter(e.target.value)} 
                 />
                 <button
-                    onClick={() =>
+                    onClick= { () =>
                         executeSearch({
                             variables: { filter: searchFilter }
                         })
@@ -32,12 +32,13 @@ const SearchPage = () => {
                 >Search</button>
             </div>
             {data &&
-                data.getProducts.map((product_name) => {
-                    <div>{product_name}</div>
-                })
+                data.getProducts.map((product) => (
+                    <div>{product.product_title}</div>
+                ))
             }
+            {console.log(data)}
         </div>
     );
-}
+};
 
 export default SearchPage
