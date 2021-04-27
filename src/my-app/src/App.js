@@ -6,6 +6,7 @@ import ProductInfoContainer from "./Components/ProductListing/ProductInfoContain
 import { GET_PRODUCTS_BY_PRODUCT_NAME } from './graphql/product';
 import { useQuery } from 'graphql-hooks';
 import AllSellerListingsContainer from './Components/SellerListing/AllSellerListingsContainer';
+import CreateNewListing from './Components/ProductListing/CreateNewListing';
 
 //import ProductInfoContainer from './ProductListing/ProductInfoContainer'
 
@@ -27,8 +28,9 @@ function App() {
       Comment or uncomment other components as you see fit  */}
       <Header />
       {/* <SearchPage /> */}
-      <AllSellerListingsContainer />
+      {/* <AllSellerListingsContainer /> */}
       {/* <ProductInfoContainer /> */}
+      <CreateNewListing />
     </div>
   );
 }

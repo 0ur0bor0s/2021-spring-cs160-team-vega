@@ -93,12 +93,13 @@ export class ProductResolver {
 
     @Mutation(() => Boolean) 
     async createNewProduct(
-        @Arg('_id') _id: String,
+        @Arg('_id') _id: string,
         @Arg('product_title') product_title: string,
         @Arg('product_desc') product_desc: string,
         @Arg('product_price') product_price: number,
         @Arg('product_seller_id') product_seller_id: number,
     ) {
+        console.log("we got to the backend!!!");
         const productRepository = getConnection("productsDBConnection").getRepository(Product);
 
         try {

@@ -1,4 +1,4 @@
-import { gql, useQuery } from '@apollo/client';
+import { gql, useQuery , useMutation } from '@apollo/client';
 
 // export const GET_PRODUCTS_BY_PRODUCT_NAME =
 export const GET_PRODUCTS_BY_PRODUCT_NAME = (searchStr) => {

@@ -1,64 +1,117 @@
-import React from "react"
+import { storeKeyNameFromField } from "@apollo/client/utilities";
+import React, { useState } from "react"
 import { v4 as uuidv4 } from "uuid";
-
-
 import ProductInfoContainer from "./ProductInfoContainer"
+import { gql, useMutation } from '@apollo/client';
 
-class CreateNewListing extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            _id: uuidv4(),
-            title: '',
-            description: '',
-            price: 0,
-            seller_id: 1 //Should get sellerID from session
+
+const CREATE_NEW_PRODUCT = gql`
+        mutation createNewProduct(
+                $_id: String!
+                $product_title: String!
+                $product_desc: String!
+                $product_price: Float!
+                $product_seller_id: Float!
+            ) {  
+                createNewProduct(
+                        _id: $_id
+                        product_title: $product_title
+                        product_desc: $product_desc
+                        product_price: $product_price
+                        product_seller_id: $product_seller_id
+                )
         }
+        `;
 
-        this.handleChangePrice = this.handleChangePrice.bind(this);
-        this.handleChangeDescription = this.handleChangeDescription.bind(this);
-        this.handleChangeTitle = this.handleChangeTitle.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
+
+export function CreateNewListing(props) {
+    const [values, setValues] = useState({
+        _id: uuidv4(), 
+        title: '',
+        price: 0.0,
+        description: '',
+        sellerID: 1, // Test Data, would use sellerID from session props
+    })
+    const [submitted, setSubmitted] = useState(false);
+    const [valid, setValid] = useState(true);
+    const [CreateNewProduct, { data }] = useMutation(CREATE_NEW_PRODUCT);
+
+    const handleTitleInputChange = (event) => {
+        setValues({...values, title: event.target.value});
+    };
+
+    const handlePriceInputChange = (event) => {
+        setValues({...values, price: event.target.value});
+    };
+
+    const handleDescriptionInputChange = (event) => {
+        setValues({...values, description: event.target.value});
+    };
+
+    const handleSubmit = (event) => {
+        if(values.title && values.price && values.description) {
+            setValid(true);
+        }
+        setSubmitted(true);
     }
+    
 
-   handleChangeTitle(event) {
-        this.setState({title: event.target.value})
-   }
+    return (
+        <div className = "form-container">
+            <form className= "register-form" onSubmit={e => {
+                e.preventDefault();
+                handleSubmit();
+                CreateNewProduct({variables: { 
+                        _id: values._id, 
+                        product_title: values.title, 
+                        product_price: Number(values.price), 
+                        product_desc: values.description, 
+                        product_seller_id: values.sellerID
+                }})
+            }}
+            >
+                {submitted && valid ? <div className="success-message">Success, product has been created.</div> : null }
+                <input 
+                    id= "title"
+                    className= 'form-field'
+                    type= "text"
+                    placeholder= "Product Title"
+                    name="title"
+                    value={values.title} 
+                    onChange={handleTitleInputChange}
+                />
+                <br></br>
+                {submitted && !values.title ? <span>Please enter a Product Title.</span> : null }
+                <br></br>
+                <input 
+                    id= "price"
+                    className= 'form-field'
+                    type= "decimal"
+                    name="price"
+                    value={values.price} 
+                    onChange={handlePriceInputChange}    
+                />
+                <br></br>
+                {submitted && !values.price ? <span>Please enter a Price.</span> : null }
+                <br></br>
+                <input 
+                    id= "description"
+                    className= 'form-field'
+                    type= "text"
+                    placeholder= "Product Description"
+                    name="description"
+                    value={values.description} 
+                    onChange={handleDescriptionInputChange}
+                />
+                <br></br>
+                {submitted && !values.description ? <span>Please enter a Product Description.</span> : null }                
+                <br></br>
+                <input 
+                    type="submit" 
+                    value="Create New Product" 
+                    onSubmit={handleSubmit}/>
+            </form>
+        </div>
+    )
 
-   handleChangeDescription(event) {
-       this.setState({description: event.target.value})
-   }
-
-   handleChangePrice(event) {
-        this.setState({price: event.target.value})
-}
-
-   handleSubmit(event) {
-       alert('A product was made: \nID:' +this.state._id + '\n' + this.state.title + this.state.description + this.state.price);
-       
-       event.preventDefault();
-   }
-
-   render() {
-       return (
-           <form onSubmit={this.handleSubmit}>
-               <label>
-                   Product Title: 
-                   <input name="title" type="text" value ={this.state.title} onChange={this.handleChangeTitle} /> 
-               </label>
-               <br></br>
-               <label>
-                   Product Description: 
-                   <textarea value={this.state.description} onChange={this.handleChangeDescription} />
-               </label>
-               <br></br>
-               <label>
-                   Product Price: 
-                   <input name="price" type="number" value ={this.state.price} onChange={this.handleChangePrice} /> 
-               </label>
-               <input type="submit" value="Submit" />
-           </form>
-       )
-   }
-
-} export default CreateNewListing;
+} export default CreateNewListing
