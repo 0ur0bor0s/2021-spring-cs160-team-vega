@@ -1,0 +1,167 @@
+.listedItemsContainer {
+    outline-style: auto;
+    padding: 50px;
+    margin: 50px;
+
+    display: grid;
+    row-gap: 25px;
+
+    
+}
+  
+.listing {
+    outline-style: auto;
+    /* border: 20px; */
+    border-color: black;
+
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+
+    display: grid;
+    grid-template-columns: 80% 20%;
+    grid-template-rows: 1;
+    align-items: center;
+    /* column-gap: 40px; */
+    /* row-gap: 100px; */
+    /* row-gap: 100px; */
+    /* grid-column: 2; */
+    /* grid-template-columns: 300px 50px; */
+    
+} 
+
+.infoContainer {
+    outline-style: auto;
+    /* margin-right: 150px;
+    align-items: left;
+    margin-left: 15px; */
+    /* margin-top:40px;
+    margin-bottom: 40px; */
+
+    display: grid;
+    /* grid-template-columns: 5; */
+    /* grid-template-rows: 5; */
+    /* grid-template-rows: 25% 25% 50%; */
+    row-gap: 5px;
+
+    /* column-gap: 5%;
+    row-gap: 5%; */
+
+    grid-template-areas: 
+        "media title title price"
+        "media id  id price"
+        "media description description price"
+        "media descrition description price"
+        "media description description";
+}
+
+/* .info {
+    outline-style: auto;
+    grid-template-areas: 
+        "media title title price"
+        "media id  id price"
+        "media description description price";
+    
+} */
+
+.infoContainer .product_id {
+    outline: auto;
+    grid-column-start: 2;
+    column-span: 3;
+    grid-row-start: 2;
+    -ms-grid-row-span: 1;
+
+    /* padding-top: 0;
+    padding-bottom: 0; */
+
+    /* justify-self: left; */
+    /* align-self: left; */
+    grid-area: "id"; 
+
+    color: dimgray;
+}
+
+.infoContainer .title {
+    outline: auto;
+    grid-column-start: 2;
+    /* grid-column-end: 4; */
+    column-span: 3;
+    grid-row-start: 1;
+    /* grid-row-end: 1; */
+    -ms-grid-row-span: 1;
+    padding-top: 5px;
+    /* justify-self: left; */
+    /* align-self: left; */
+    /* padding: 5px;
+    margin: 5px;  */
+    font-size: 24;
+    font-weight: bold;
+    /* align-items: center; */
+    grid-area: "title";
+}
+
+.infoContainer .description {
+    outline: auto;
+    grid-column-start: 2;
+    /* grid-column-end: 4; */
+    column-span: 3;
+    /* grid-row-start: 3;
+    grid-row-end: 4; */
+    grid-row-start: 3;
+    -ms-grid-row-span: 3;
+    min-height: 3;
+    max-height: 3;
+     /* min-height: 3; */
+    /* justify-self: left; */
+  
+    /* align-items: left; */
+    grid-area: "description";
+
+      /* color: dimgray; */
+}
+
+.infoContainer .price {
+    outline: auto;
+    grid-column-start: 3;
+    grid-row-start: 1;
+    grid-row-end: 4;
+    /* justify-content: center; */
+    /* justify-self: center; */
+    align-self: center;
+
+    
+
+    font-weight: bold;
+    /* align-items: right; */
+    /* grid-area: price; */
+}
+
+.infoContainer .media {
+    grid-column-start: 1;
+    grid-row-start: 1;
+    /* justify-items: start; */
+    grid-area: "media";
+} 
+  
+.listing .editButton {
+    /* justify-self: center; */
+    /* align-items: center; */
+    /* margin-top: 25%; */
+    /* margin-bottom: 25%; */
+
+    justify-self: right;
+    height: 50px;
+    width: 75px;
+
+    font-size: 18px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    /* border: 10px; */
+    border-color: black;
+    background: #b8ccd6;
+    outline-style: auto;
+    outline-color: black;
+
+    cursor: pointer;
+   
+  }
