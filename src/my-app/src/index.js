@@ -1,9 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
-import { getAccessToken } from './accessToken';
 import { ApolloLink, ApolloProvider, ApolloClient, InMemoryCache, Observable } from '@apollo/client';
+import { Routes } from './Routes';
 
 /*import { TokenRefreshLink } from "apollo-link-token-refresh";
 
@@ -46,7 +45,7 @@ const client = new ApolloClient({
 
 ReactDOM.render(
   <ApolloProvider client={client}>
-    <App/>
+    <Routes/>
   </ApolloProvider>,
   document.getElementById('root')
 );
