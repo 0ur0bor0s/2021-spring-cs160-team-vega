@@ -22,7 +22,7 @@ import { ProductResolver } from "./ProductResolver";
         })
     );
     app.use(cookieParser());
-    //app.get('/', (_, res) => res.send("hello"));
+    // app.get('/', (_, res) => res.send());
 
     //Used to refresh access token
     //Our cookie only works on this route, helps for security purposes, our token only gets sent for refreshing
@@ -73,6 +73,7 @@ import { ProductResolver } from "./ProductResolver";
 
     app.listen(4000, () => {
         console.log("Express server started -- listening on port 4000!")
+        console.log('Running a GraphQL API server at localhost:4000/graphql');
     })
 
 })();
