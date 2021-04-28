@@ -7,6 +7,9 @@ const PRODUCT_QUERY = gql`
     query GetProduct($filter: String!) {
         getProducts(searchStr: $filter) {
             product_title
+            product_price
+            buy_link
+            img_link
         }
     }
 `;
@@ -33,7 +36,15 @@ const SearchPage = () => {
             </div>
             {data &&
                 data.getProducts.map((product) => (
+                    <>
+                    <br/>
+                    <div class='crawled-product'>
                     <div>{product.product_title}</div>
+                    <div><img src={product.img_link} alt={product.product_title}/></div>  
+                    <div>{product.product_price}</div>
+                    <div><a href={product.buy_link}>Buy Here</a></div>
+                    </div>
+                    </>
                 ))
             }
             {console.log(data)}
