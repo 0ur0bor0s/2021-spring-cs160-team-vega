@@ -10,6 +10,10 @@ export class Product extends BaseEntity {
 
     @Field()
     @Column()
+    buy_link: string;
+
+    @Field()
+    @Column()
     product_title: string;
 
     @Field()
@@ -25,7 +29,7 @@ export class Product extends BaseEntity {
     @Column()
     product_seller_id: number;
 
-    // @Field()
-    // @Column()
-    // store: string;
+    @Field()
+    @Column()
+    img_link: string;
 }

@@ -343,11 +343,10 @@ async fn main() -> std::io::Result<()> {
     }
 
     // Convert to json and write to file    
-    let payload: String = structs_to_json(&item_vec);
+    //let payload: String = structs_to_json(&item_vec);
 
     //Establish connection to db and write documents to ebay-items
     let client = Client::with_uri_str("mongodb://localhost:27017/?readPreference=primary&appname=MongoDB%20Compass&ssl=false").await.unwrap();
-    //let client = Client::with_uri_str("mongodb+srv://ben:beni10@cluster0.qgnlv.mongodb.net/myFirstDatabase?retryWrites=true&w=majority").await.unwrap();
     let database = client.database("Products");
     let collection = database.collection("product");
 

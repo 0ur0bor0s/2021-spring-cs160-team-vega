@@ -25,7 +25,7 @@ export class ProductResolver {
     ) {
         const searchFiltered = new RegExp(`${searchStr}`, "i");
         console.log(searchFiltered);
-        var products = await getConnection("productsDBConnection")
+        var data = await getConnection("productsDBConnection")
             .getMongoRepository(Product)
             .find({
                 where: {
@@ -34,7 +34,7 @@ export class ProductResolver {
         });
 
         // If product could not be found in database then populate database and query again
-        if (products.length == 0) {  
+        if (data.length == 0) {  
             console.log("Searching for new products...");
 
             var init_cmd = new String('cd ../ecomm_crawler && cargo run --release ');
@@ -43,17 +43,17 @@ export class ProductResolver {
             var spawn = child.spawn;
             var cprocess = spawn(command, undefined, {shell: true, cwd: __dirname+'/../ecomm_crawler'});
     
-            cprocess.stderr.on('data', function (data) {
+            cprocess.stderr.on('data', (data) => {
                 console.error("STDERR:", data.toString());
             });
-            cprocess.stdout.on('data', function (data) {
+            cprocess.stdout.on('data', (data) => {
                 console.log("STDOUT:", data.toString());
             });
             cprocess.on('exit', (exitCode) => {
                 console.log("Child process exited with code: " + exitCode);
             });
             
-            products = await getConnection("productsDBConnection")
+            data = await getConnection("productsDBConnection")
 
             .getMongoRepository(Product)
             .find({
@@ -62,8 +62,8 @@ export class ProductResolver {
                 }
             });
         }
-        console.log(products);
-        return products;
+        console.log(data);
+        return data;
     }
 
 
