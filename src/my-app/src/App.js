@@ -3,6 +3,8 @@ import './App.css';
 import SearchPage from './SearchPage.js';
 import Header from "./Components/Header"
 import { useGetProductsQuery } from './graphql/product';
+import ProdDelete from './Components/ProductListing/ProdDelete';
+import SortBy from './Components/SortBy';
 
 //import ProductInfoContainer from './ProductListing/ProductInfoContainer'
 
@@ -25,6 +27,8 @@ function App() {
       <Header />
       <SearchPage />
       {/* <ProductInfoContainer /> */}
+      {/* <ProdDelete /> */}
+      {/* <SortBy /> */}
     </div>
   );
 }
