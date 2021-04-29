@@ -9,8 +9,23 @@ import { getConnection } from 'typeorm';
 
 @ObjectType()
 class LoginResponse {
+    @Field({ nullable: true })
+    id?: number
+    
+    @Field({ nullable: true })
+    accessToken?: string
+
+    @Field({ nullable: true })
+    message?: string
+}
+
+@ObjectType()
+class RegistrationResponse {
     @Field()
-    accessToken: string
+    success: boolean;
+
+    @Field({ nullable: true })
+    message: string
 }
 
 @Resolver()
@@ -75,14 +90,18 @@ export class UserResolver {
             .findOne({ where: { email } });
 
         if (!user) {
-            throw new Error('User does not exist!');
+            return {
+                message: "user does not exist!"
+            }
         }
 
         //Check if password is valid
         const valid = await compare(password, user.password);
 
         if (!valid) {
-            throw new Error("Bad pasword");
+            return {
+                message: "incorrect email or password!"
+            }
         }
 
         //Login is succesful
@@ -90,13 +109,14 @@ export class UserResolver {
         sendRefreshToken(res, createRefreshToken(user));
 
         return {
+            id: user.id,
             accessToken: createAccessToken(user)
         };
     }
 
 
    //We use mutations when we want to update something or create something or make a change to our DB
-   @Mutation(() => Boolean)
+   @Mutation(() => RegistrationResponse)
    async register(
        //email inside the quotation marks is the name of the graphql argument, email is the variable name
        @Arg('email') email: string,
@@ -107,15 +127,30 @@ export class UserResolver {
        const userRepository = getConnection("usersDBConnection")
            .getRepository(User);
 
-       const userFound = await userRepository.findOne({
+       const userWithEmailFound = await userRepository.findOne({
            where: {
                email
            }
        })
 
-       if (userFound) {
-           console.log("user already exists in database!");
-           return false;
+       if (userWithEmailFound) {
+           return {
+               success: false,
+               message: "email is already being used!"
+           };
+       }
+
+       const userWithUsernameFound = await userRepository.findOne({
+           where: {
+               username
+           }
+       })
+
+       if (userWithUsernameFound) {
+           return {
+               success: false,
+               message: "username is already being used!"
+           }
        }
 
        const hashedPassword = await hash(password, 12);
@@ -128,10 +163,14 @@ export class UserResolver {
                    password: hashedPassword
                });
        } catch(err) {
-           console.log(err);
-           return false;
+           return {
+                success: false,
+                message: "unknown error occurred"
+            };
        }
        
-       return true;
+       return {
+           success: true,
+       };
    }
 }
