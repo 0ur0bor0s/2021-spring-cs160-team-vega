@@ -33,22 +33,23 @@ const SellerListingCard = props => {
             </div>
              <div>
                 <button className={Styles.editButton} onClick={() => setIsOpen(true)}>Edit</button>
-                <EditListingModal open={isOpen} onClose={() => setIsOpen(false)}>
-                    {props.product_id}
-                    {props.title}
-                    {props.price}
-                    {props.description}
-                    {props.images}
+                {isOpen ? <EditListingModal open={isOpen} onClose={() => setIsOpen(false)}>
+                        {props.product_id}
+                        {props.title}
+                        {props.price}
+                        {props.description}
+                        {props.images}
 
-                    {/* product_title={product_title}
-                    product_price={product_price}
-                    product_desc={product_desc} */}
-                    {/* // 
-                    //     TO DO:
-                    //         - figure out if images will be in db.   
-                    //  */}
-                    {/* product_id={product._id}  */}
-                </EditListingModal> 
+                        {/* product_title={product_title}
+                        product_price={product_price}
+                        product_desc={product_desc} */}
+                        {/* // 
+                        //     TO DO:
+                        //         - figure out if images will be in db.   
+                        //  */}
+                        {/* product_id={product._id}  */}
+                    </EditListingModal> 
+                    : null}
                                          
                 
                 {/* <Modal product={props} isOpen={editModalIsOpen}>
