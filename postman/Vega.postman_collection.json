@@ -1,0 +1,327 @@
+{
+	"info": {
+		"_postman_id": "e0a69ec9-3d8c-4c9f-b45c-b45839121e96",
+		"name": "Vega",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Registration",
+			"item": [
+				{
+					"name": "User successfully registers account that does not exist in users table",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Registration successful\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data.register.success).to.eql(true);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation register($email: String!, $password: String!, $username: String!) {\r\n    register(email: $email, password: $password, username: $username) {\r\n        success\r\n        message\r\n    }\r\n}",
+								"variables": "{\r\n    \"email\": \"seller@gmail.com\",\r\n    \"username\": \"seller\",\r\n    \"password\": \"best\"\r\n}"
+							}
+						},
+						"url": {
+							"raw": "localhost:4000/graphql",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User tries to register account with an email that is already being used",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Registration failed\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data.register.success).to.eql(false);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Registration failed message exists\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data.register.message).not.eql(null);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation register($email: String!, $password: String!, $username: String!) {\r\n    register(email: $email, password: $password, username: $username) {\r\n        success\r\n        message\r\n    }\r\n}",
+								"variables": "{\r\n    \"email\": \"seller@gmail.com\",\r\n    \"username\": \"seller\",\r\n    \"password\": \"best\"\r\n}"
+							}
+						},
+						"url": {
+							"raw": "localhost:4000/graphql",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User tries to register account with a username that is already being used",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Registration failed\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data.register.success).to.eql(false);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Registration failed message exists\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data.register.message).not.eql(null);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation register($email: String!, $password: String!, $username: String!) {\r\n    register(email: $email, password: $password, username: $username) {\r\n        success\r\n        message\r\n    }\r\n}",
+								"variables": "{\r\n    \"email\": \"seller2@gmail.com\",\r\n    \"username\": \"seller\",\r\n    \"password\": \"best\"\r\n}"
+							}
+						},
+						"url": {
+							"raw": "localhost:4000/graphql",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "Get Product By Product Seller ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"All products returned are owned by product_seller_id\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    var product_seller_id = pm.variables.get(\"product_seller_id\");\r",
+									"\r",
+									"    for (product in jsonData.data.getProductsBySellerId) {\r",
+									"        pm.expect(product.product_seller_id).to.eql(product_seller_id);\r",
+									"    }\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query getProductsBySellerId($product_seller_id: Int!) {\r\n    getProductsBySellerId(product_seller_id: $product_seller_id) {\r\n        _id\r\n        product_desc\r\n        product_price\r\n        product_seller_id\r\n        product_title\r\n    }\r\n}",
+								"variables": "{\r\n    \"product_seller_id\": 1\r\n}"
+							}
+						},
+						"url": {
+							"raw": "localhost:4000/graphql",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Login",
+			"item": [
+				{
+					"name": "User successfully logs into account",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Login successful\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data.login.id).to.eql(1);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Login access token exists\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data.login.accessToken).not.eq(undefined);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation login($email: String!, $password: String!) {\r\n    login(email: $email, password: $password) {\r\n        id\r\n        accessToken\r\n    }\r\n}",
+								"variables": "{\r\n    \"email\": \"bob@gmail.com\",\r\n    \"password\": \"bob\"\r\n}"
+							}
+						},
+						"url": {
+							"raw": "localhost:4000/graphql",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User inputs incorrect password",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Login failed\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data.login.id).to.eql(null);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Login failed message exists\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data.login.message).not.eql(null);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation login($email: String!, $password: String!) {\r\n    login(email: $email, password: $password) {\r\n        id\r\n        accessToken\r\n        message\r\n    }\r\n}",
+								"variables": "{\r\n    \"email\": \"bob@gmail.com\",\r\n    \"password\": \"best\"\r\n}"
+							}
+						},
+						"url": {
+							"raw": "localhost:4000/graphql",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User tries to login with an account that does not exist",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Login failed\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data.login.id).to.eql(null);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Login failed message exists\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data.login.message).not.eql(null);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation login($email: String!, $password: String!) {\r\n    login(email: $email, password: $password) {\r\n        id\r\n        accessToken\r\n        message\r\n    }\r\n}",
+								"variables": "{\r\n    \"email\": \"bob2@gmail.com\",\r\n    \"password\": \"best\"\r\n}"
+							}
+						},
+						"url": {
+							"raw": "localhost:4000/graphql",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
