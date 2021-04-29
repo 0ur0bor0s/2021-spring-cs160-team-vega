@@ -2,7 +2,7 @@ import { gql, useQuery } from '@apollo/client';
 
 // export const GET_PRODUCTS_BY_PRODUCT_NAME =
 export const GET_PRODUCTS_BY_PRODUCT_NAME = (searchStr) => {
-    const query = gql`
+    return gql`
         query getProductsByProductName($searchStr: String!) {
             getProductsByProductName(searchStr: $searchStr) {
                 _id
@@ -12,13 +12,7 @@ export const GET_PRODUCTS_BY_PRODUCT_NAME = (searchStr) => {
                 product_seller_id
             }
         }
-        `;
-    
-    return useQuery(query, {
-        variables: {
-            searchStr
-        }
-    });
+    `;
 }
 
 
@@ -64,4 +58,21 @@ return useQuery(query, {
         username
     }
 });
+}
+
+
+export const GET_TWENTY_PRODUCTS_QUERY = () => {
+    const query = gql`
+        query  {    
+            getTwentyProducts {
+                _id
+                product_title
+                product_desc
+                product_price
+                product_seller_id
+            }
+        }
+        `;
+
+    return useQuery(query, {});
 }
