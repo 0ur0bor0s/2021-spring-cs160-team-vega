@@ -1,1 +1,4 @@
 src/server/ecomm_crawler/target/
+node_modules/
+cypress.json
+cypress/
