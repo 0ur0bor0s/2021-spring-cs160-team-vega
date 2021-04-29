@@ -1,27 +1,30 @@
 .listedItemsContainer {
     outline-style: auto;
     padding: 50px;
-    margin: 50px;
-
+    margin-left: 200px;
+    margin-right: 200px;
+    margin-top: 50px;
+    margin-bottom: 100px;
     display: grid;
-    row-gap: 25px;
-
-    
+    row-gap: 50px;  
 }
   
 .listing {
     outline-style: auto;
     /* border: 20px; */
     border-color: black;
+    background-color: whitesmoke;
 
-    padding-top: 20px;
-    padding-bottom: 20px;
-    padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 5px;
     padding-right: 10px;
+    /* row-gap: 50px; */
 
     display: grid;
-    grid-template-columns: 80% 20%;
-    grid-template-rows: 1;
+    height: 150px;
+    grid-template-columns: .85fr .15fr;
+    
     align-items: center;
     /* column-gap: 40px; */
     /* row-gap: 100px; */
@@ -38,22 +41,22 @@
     margin-left: 15px; */
     /* margin-top:40px;
     margin-bottom: 40px; */
-
+    background-color: rgb(255, 255, 255);
     display: grid;
+    height: 150px;
     /* grid-template-columns: 5; */
     /* grid-template-rows: 5; */
     /* grid-template-rows: 25% 25% 50%; */
-    row-gap: 5px;
+    /* row-gap: 5px; */
 
     /* column-gap: 5%;
     row-gap: 5%; */
-
+    grid-template-columns: 1fr 3.5fr 1fr;
+    grid-template-rows: 1fr .5fr 3fr;
     grid-template-areas: 
-        "media title title price"
-        "media id  id price"
-        "media description description price"
-        "media descrition description price"
-        "media description description";
+        "media title price"
+        "media id price"
+        "media description price";
 }
 
 /* .info {
@@ -68,53 +71,66 @@
 .infoContainer .product_id {
     outline: auto;
     grid-column-start: 2;
-    column-span: 3;
+    grid-column-end: 2;
+    /* column-span: 3; */
     grid-row-start: 2;
-    -ms-grid-row-span: 1;
+    grid-row-end: 2;
+    /* -ms-grid-row-span: 1; */
 
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
     /* padding-top: 0;
     padding-bottom: 0; */
 
-    /* justify-self: left; */
+    justify-self: left;
     /* align-self: left; */
     grid-area: "id"; 
-
-    color: dimgray;
+    font: 1px;
+    /* color: rgb(236, 236, 236); */
 }
 
 .infoContainer .title {
     outline: auto;
+    grid-area: "title";
     grid-column-start: 2;
-    /* grid-column-end: 4; */
-    column-span: 3;
+    grid-column-end: 2;
+    /* column-span: 3; */
     grid-row-start: 1;
-    /* grid-row-end: 1; */
-    -ms-grid-row-span: 1;
-    padding-top: 5px;
-    /* justify-self: left; */
+    grid-row-end: 1;
+    /* -ms-grid-row-span: 1; */
+    min-height: 1fr;
+    max-width: 1fr;
+
+    margin-top: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    justify-self: left;
     /* align-self: left; */
     /* padding: 5px;
     margin: 5px;  */
-    font-size: 24;
+    font-size: 30px;
     font-weight: bold;
     /* align-items: center; */
-    grid-area: "title";
+    
 }
 
 .infoContainer .description {
     outline: auto;
     grid-column-start: 2;
-    /* grid-column-end: 4; */
-    column-span: 3;
-    /* grid-row-start: 3;
-    grid-row-end: 4; */
+    grid-column-end: 2;
+    /* column-span: 3; */
     grid-row-start: 3;
-    -ms-grid-row-span: 3;
-    min-height: 3;
-    max-height: 3;
-     /* min-height: 3; */
-    /* justify-self: left; */
+    grid-row-end: 3; 
   
+    /* min-height: 3.5fr;    
+    max-height: 3.5fr; */
+     /* min-height: 3; */
+    align-self: left;
+  
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-bottom: 5px;
     /* align-items: left; */
     grid-area: "description";
 
@@ -124,24 +140,38 @@
 .infoContainer .price {
     outline: auto;
     grid-column-start: 3;
+    grid-column-end: 3;
     grid-row-start: 1;
     grid-row-end: 4;
-    /* justify-content: center; */
-    /* justify-self: center; */
+
+    justify-self: center;
     align-self: center;
 
-    
-
+    max-width: .75fr;
     font-weight: bold;
-    /* align-items: right; */
-    /* grid-area: price; */
 }
 
 .infoContainer .media {
+    outline: auto;
+   
     grid-column-start: 1;
-    grid-row-start: 1;
+    grid-column-end: 1;
+    grid-row-start: 1; 
+    grid-row-end: 4;
     /* justify-items: start; */
     grid-area: "media";
+
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    /* padding-right: 5px; */
+    margin-right: 5px;
+
+    height: 4.5fr;
+    width: 1fr;
+/* 
+    max-height: 4.5fr;
+    min-height: 4.5fr; */
 } 
   
 .listing .editButton {

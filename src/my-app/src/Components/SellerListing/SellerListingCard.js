@@ -1,21 +1,21 @@
 // import { parseAndCheckHttpResponse } from "@apollo/client";
 import React, { useState, useEffect } from "react";
 import Styles from "./SellerListing.module.css";
-
-import EditListingInfoPopUp from "./EditListingInfoPopUp";
+// import EditListingModal from 'react-modal';
+import EditListingModal from "./EditListingModal";
 
 
 // Presentational Component to display a Seller's listing of a product and its info.
 const SellerListingCard = props => {
 
-    const [editStatus, setEditStatus] = useState(false);
-    console.log("edit status: " + editStatus);
+    const [isOpen, setIsOpen] = useState(false);
+    console.log("edit status: " + isOpen);
 
 
-    function toggleEditListingPop() {
-        setEditStatus(editStatus => !editStatus);
-        console.log(editStatus);
-    };
+    // function toggleEditListingModal() {
+    //     setEditModalIsOpen => (!editModalIsOpen);
+    //     console.log(editModalIsOpen);
+    // };
 
 
     return (
@@ -31,10 +31,32 @@ const SellerListingCard = props => {
                 </div>
             
             </div>
-             <div onClick={toggleEditListingPop}>
-                <button className={Styles.editButton}>Edit</button>
+             <div>
+                <button className={Styles.editButton} onClick={() => setIsOpen(true)}>Edit</button>
+                <EditListingModal open={isOpen} onClose={() => setIsOpen(false)}>
+                    {props.product_id}
+                    {props.title}
+                    {props.price}
+                    {props.description}
+                    {props.images}
+
+                    {/* product_title={product_title}
+                    product_price={product_price}
+                    product_desc={product_desc} */}
+                    {/* // 
+                    //     TO DO:
+                    //         - figure out if images will be in db.   
+                    //  */}
+                    {/* product_id={product._id}  */}
+                </EditListingModal> 
+                                         
+                
+                {/* <Modal product={props} isOpen={editModalIsOpen}>
+                    <h2>Edit Product </h2>
+                    const {id, price, title, description, seller_id} = this.props.product;
+                </Modal> */}  
             </div>
-            {editStatus ? <EditListingInfoPopUp product={props} toggle={toggleEditListingPop} /> : null}
+            {/* {editStatus ? <EditListingModal product={props} isOpen={toggleEditListingModal} /> : null} */}
         </div>
     
     // {/* Edit Button toggles the popup for EditListing */}
