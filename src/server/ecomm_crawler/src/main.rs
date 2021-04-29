@@ -294,7 +294,10 @@ async fn main() -> std::io::Result<()> {
     assert_eq!(args.len(), 3);
 
     // Create url
-    let search_item = &args[1];
+    let mut search_item_chars = (&*args[1]).chars();
+    //search_item_chars.next();
+    search_item_chars.next_back();
+    let search_item = search_item_chars.as_str();
     let page_nums: u32 = *&args[2].parse::<u32>().unwrap() - 1;
     
     // Create client to send server requests

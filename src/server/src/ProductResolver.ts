@@ -39,7 +39,7 @@ export class ProductResolver {
 
             var init_cmd = new String('cd ../ecomm_crawler && cargo run --release ');
             var number = new String(' 1');
-            var command = init_cmd.concat(searchStr).concat(number.toString());
+            var command = init_cmd.concat("'", searchStr, "'").concat(number.toString());
             var spawn = child.spawn;
             var cprocess = spawn(command, undefined, {shell: true, cwd: __dirname+'/../ecomm_crawler'});
     
