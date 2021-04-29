@@ -25,7 +25,7 @@ const Header = () => {
                 color: "#000000",
                 textTransform: "lowercase",
                 textAlign: "left",            }
-        }>vega</h1><SearchBar /> 
+        }>vega</h1>{/*<SearchBar />*/} 
     </header>
   )
 }
