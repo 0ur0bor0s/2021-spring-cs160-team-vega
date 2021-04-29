@@ -66,6 +66,12 @@ export class ProductResolver {
         return data;
     }
 
+    @Query(() => [Product])
+    async getTwentyProducts() {
+        return await getConnection("productsDBConnection")
+            .getMongoRepository(Product)
+            .find({take:20})
+    }
 
     @Query(() => [Product])
     async getProductsBySellerId(
