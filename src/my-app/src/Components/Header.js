@@ -1,32 +1,30 @@
-import React from "react"
-import SearchBar from './SearchBar'
-
-const Header = () => {
-
-
-  const headerStyle = {
-      padding: "20px 0",
-      lineHeight: "1.5em",
-      display: 'flex',
-      alignItems: 'center'
-    }
+import React, { useState, useEffect } from 'react';
+import { Link } from "react-router-dom";
+import "./CSS/Header.css";
 
 
+
+const Header = (props) => {
+  const [searchFilter, setSearchFilter] = useState('');
+
+  const search = () => {
+    props.history.push(`/search?keyword=${searchFilter}`);
+  }
 
   return (
-    <header style ={headerStyle}>
-      <h1
-        style ={
-            {
-                fontSize: "5rem",
-                fontWeight: "600",
-                marginBottom: "2rem",
-                lineHeight: "1em",
-                color: "#000000",
-                textTransform: "lowercase",
-                textAlign: "left",            }
-        }>vega</h1><SearchBar /> 
-    </header>
+      <div className="gwd-div-1tnt" id="header-div">
+        <Link to="/" style={{textDecoration : "none"}}><label id="label_1" className="gwd-label-1xit">Vega</label></Link>
+        <div className="gwd-div-1im0">
+          <input type="text" id="text_1" onChange={ (e) => setSearchFilter(e.target.value)}  className="gwd-input-116q"/>
+          <button id="button_1" className="gwd-button-rvij" onClick= {search}>
+            Search
+          </button>
+        </div>
+        <div className="gwd-div-1b0h">
+          <button id="button_2" className="gwd-button-rr5j gwd-button-1d0r" onClick={() => props.history.push("/login")}>Login</button>
+            <button id="button_3" className="gwd-button-rr5j gwd-button-iigw" onClick={() => props.history.push("/signup")}>Signup</button>
+        </div>
+      </div>
   )
 }
 

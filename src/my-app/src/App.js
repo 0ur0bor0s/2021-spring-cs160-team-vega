@@ -25,8 +25,8 @@ function App() {
       {/* To view changes, make a call to your component here. 
       Comment or uncomment other components as you see fit  */}
       <Header />
-      {/* <SearchPage /> */}
-      <AllSellerListingsContainer />
+      <SearchPage />
+      {/*<AllSellerListingsContainer />*/}
       {/* <ProductInfoContainer /> */}
     </div>
   );

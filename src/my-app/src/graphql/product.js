@@ -3,7 +3,7 @@ import { gql, useQuery, useMutation} from '@apollo/client';
 
 
 export const GET_PRODUCTS_BY_PRODUCT_NAME = (searchStr) => {
-    const query = gql`
+    return gql`
         query getProductsByProductName($searchStr: String!) {
             getProductsByProductName(searchStr: $searchStr) {
                 # _id
@@ -14,13 +14,7 @@ export const GET_PRODUCTS_BY_PRODUCT_NAME = (searchStr) => {
                 product_seller_id
             }
         }
-        `;
-    
-    return useQuery(query, {
-        variables: {
-            searchStr
-        }
-    });
+    `;
 }
 
 
@@ -90,3 +84,18 @@ export const UPDATE_PRODUCT_LISTING = (product_id, product_title, product_desc, 
     })
 }
 
+export const GET_TWENTY_PRODUCTS_QUERY = () => {
+    const query = gql`
+        query  {    
+            getTwentyProducts {
+                _id
+                product_title
+                product_desc
+                product_price
+                product_seller_id
+            }
+        }
+        `;
+
+    return useQuery(query, {});
+}
