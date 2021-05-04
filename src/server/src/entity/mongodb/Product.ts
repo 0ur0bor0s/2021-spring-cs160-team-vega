@@ -32,7 +32,12 @@ export class Product extends BaseEntity {
     @Column()
     product_seller_id: number;
 
+
+    // if product is in-house, images will be uploads
+    // if product is frome external sites, images will be urls 
     @Field()
     @Column()
     img_link: string;
+
+    // create image_file field
 }
