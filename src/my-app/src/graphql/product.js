@@ -3,7 +3,7 @@ import { gql, useQuery, useMutation} from '@apollo/client';
 
 
 export const GET_PRODUCTS_BY_PRODUCT_NAME = (searchStr) => {
-    const query = gql`
+    return gql`
         query getProductsByProductName($searchStr: String!) {
             getProductsByProductName(searchStr: $searchStr) {
                 # _id
@@ -14,13 +14,7 @@ export const GET_PRODUCTS_BY_PRODUCT_NAME = (searchStr) => {
                 product_seller_id
             }
         }
-        `;
-    
-    return useQuery(query, {
-        variables: {
-            searchStr
-        }
-    });
+    `;
 }
 
 
@@ -69,13 +63,41 @@ return useQuery(query, {
 }
 
 
-// export const UPDATE_PRODUCT_LISTING = gql`
-//     mutation updateProductListing($product_id: String!, $product_title: String!, $product_desc: String!, $product_price: number!) {
-//         updateProductListing(
-//             product_id: $product_id, 
-//             product_title: $product_title, 
-//             product_desc: $product_desc, 
-//             product_price: $product_price)
-//     }
-// `;
+// export const UPDATE_PRODUCT_LISTING = (product_id, product_title, product_desc, product_price) => {
+//     const mutation = gql`
+export const UPDATE_PRODUCT_LISTING = gql`
+        mutation updateProductListing($product_id: SString!, $product_title: String!, $product_desc: String!, $product_price: Float!) {
+            updateProductListing(
+                product_id: $product_id, 
+                product_title: $product_title, 
+                product_desc: $product_desc, 
+                product_price: $product_price)
+                # image
+        }
+        `;
+    
+    // return useMutation( mutation, {
+    //     variables: {
+    //         product_id,
+    //         product_title,
+    //         product_desc,
+    //         product_price
+    //     }
+    // })
+// }
 
+export const GET_TWENTY_PRODUCTS_QUERY = () => {
+    const query = gql`
+        query  {    
+            getTwentyProducts {
+                _id
+                product_title
+                product_desc
+                product_price
+                product_seller_id
+            }
+        }
+        `;
+
+    return useQuery(query, {});
+}

@@ -1,89 +1,60 @@
 import React, { useState, setState } from "react";
 import Styles from "./EditListing.module.css";
-import { gql, useQuery, useMutation} from '@apollo/client';
-// import { UPDATE_PRODUCT_LISTING } from "../../graphql/product";
-// import { useMutation } from "graphql-hooks"
+import { UPDATE_PRODUCT_LISTING } from "../../graphql/product";
 import ReactDom from "react-dom";
-// import Modal from "react-modal";
-// import Popup from "react-popup";
+import { useMutation } from "@apollo/client";
 
-
-// Error: 'gql template literal' if this is in graphql/product.js
-const UPDATE_PRODUCT_LISTING = gql`
-    mutation updateProductListing($product_id: String!, $product_title: String!, $product_desc: String!, $product_price: number!) {
-        updateProductListing(
-            product_id: $product_id, 
-            product_title: $product_title, 
-            product_desc: $product_desc, 
-            product_price: $product_price)
-    }
-`;
-
-
+// class EditListingModal extends React.Component {
 const EditListingModal = ({ children, onClose }) => {
     
-    console.log(children);
-    const [prod_id, prod_title, prod_price, prod_desc, prod_seller_id] = children;
+    // console.log(children);
+    const [product_id, product_title, product_price, product_desc, product_images] = children;
+    // console.log("from children:");
+    // console.log(product_id);
+    // console.log(product_title);
+    // console.log(product_price);
+    // console.log(product_desc);
+    // console.log(product_images);
+
+    const [title, setTitle] = useState(product_title);
+    const [description, setDescription] = useState(product_desc);
+    const [price, setPrice] = useState(product_price);
+    const [images, setImages] = useState(product_images);
+
+    // console.log("use state values:");
     // console.log(product_id);
     // console.log(title);
     // console.log(price);
     // console.log(description);
+    // console.log(images);
 
-    const [product_id, setProduct_id] = useState(prod_id);
-    const [title, setTitle] = useState(prod_title);
-    const [description, setDescription] = useState(prod_desc);
-    const [price, setPrice] = useState(prod_price);
+    const [updateListing, { loading }] = useMutation(UPDATE_PRODUCT_LISTING, {
+        variables: {
+            product_id: product_id, 
+            product_title: title, 
+            product_desc: description, 
+            product_price: price
+            // image
+        }
+    });
     
-    const [executeUpdate] = useMutation(UPDATE_PRODUCT_LISTING);
-        
-    const handleSave = (evt) => {
-        console.log("handling save:");
-            evt.preventDefault();
-            executeUpdate({ 
-                variables: { 
-                    product_id: product_id, 
-                    product_title: title,
-                    product_desc: description,
-                    product_price: price
-                }
-            });
-            console.log("closing edit modal");
-            onClose();
+    const save = () => {
+        updateListing();
+        onClose();
     }
 
     return ReactDom.createPortal(
         <>
             <div className={Styles.overlay}>
                 <div className={Styles.modal}>
-                {/* <div className={Styles.modal_content}> */}
-                    {/* What does &times do? */}
-                    {/* <span className="close" onClick={this.handleClick}>&times;</span> */}
-                    
                     {/* 
                         TODO:
-                        - Pop up should literally popup a new window on the page -- not display under the item.
-                            - background behind pop up will be shadowed.
-                        - Structure the popup window edit format to be similar to format of SellerListingContainer 
-                        - determine action routing for listing update
                         - sanitize inputs prior to mutation (inside graphql/updatelisting)
                         - after mutating (updating), query all products again in AllSellerListingsContainer
                             - might need to use useEffect or some other hooks/functions.
                     */}
                     <div className={Styles.header}>Edit listing for product: {product_id}</div>
-                    <form onSubmit={handleSave}
-                        // onSubmit={ e => {
-                        // console.log("submitting..");
-                        //  e.preventDefault();
-                        //  executeUpdate({ 
-                        //      variables: { 
-                        //          product_id: product_id, 
-                        //          product_title: title,
-                        //          product_desc: description,
-                        //          product_price: price
-                        //      }
-                        //  });
-                    >
-                     
+                    {/* <form action="" method="put"> */}
                         <div className={Styles.form}>
                             <div className={Styles.title}>
                                 <label className={Styles.label}>Product Name:</label><br></br>
@@ -95,7 +66,7 @@ const EditListingModal = ({ children, onClose }) => {
                             </div>
                             <div className={Styles.price}>
                                 <label className={Styles.label}>Price:</label><br></br>
-                                <input type="text" size="8" maxLength="10"name="price" defaultValue={price} onChange={e => setPrice(e.target.value)} />
+                                <input type="text" size="8" maxLength="10"name="price" defaultValue={price} onChange={e => setPrice(parseFloat(e.target.value))} />
                             </div>
                             {/* 
                                 TODO:
@@ -103,26 +74,23 @@ const EditListingModal = ({ children, onClose }) => {
                                     - show a mini thumbnail for each photo uploaded.    
                             */}
                             <div className={Styles.media}>
-                                <label className={Styles.label}>Upload Media: </label><br></br>
+                                <label className={Styles.label}>Upload Media: </label><br></br><br></br>
                                 <input type="file" name="image" accept="image/*"/>
                             </div>
                         </div>
                         <div className={Styles.buttons}>
-                            <div className={Styles.button}>
-                                <button type="submit">Save</button>
+                            <div className={Styles.save}>
+                                <button onClick={ save } disabled={ loading }>Save</button>
                                 {/* <input type="submit" value="Save" /> */}
                             </div>
-                            <div className={Styles.button}>
-                                <button type="button" onClick={ onClose }>Cancel</button>
+                            <div className={Styles.cancel}>
+                                <button onClick={ onClose }>Cancel</button>
                             </div>
                         </div>
-                    </form>
-                    
                 </div>
             </div>
         </>,
         document.getElementById('portal')
-    
     );
 }
 export default EditListingModal;
