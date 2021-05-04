@@ -39,10 +39,14 @@
     left: 993px;
   }
   .gwd-button-iigw {
-    left: 52.38%;
+    left: 54%;
     top: 0px;
   }
   .gwd-button-1d0r {
+    top: 0px;
+    left: 27%;
+  }
+  .gwd-button-1234 {
     top: 0px;
     left: 0%;
   }
@@ -58,7 +62,7 @@
     height: 24px;
     margin-left: auto;
     margin-right: 10px;
-    width: 210.02px;
+    width: 400px;
     position: relative;
     top: 0px;
   }

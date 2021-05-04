@@ -162,7 +162,7 @@ export class ProductResolver {
 
     // Refactor using Product as arg
     @Mutation(() => Boolean)
-    async editProductListing(
+    async updateProductListing(
         @Arg('product_id') product_id: string,
         @Arg('product_title') product_title: string,
         @Arg('product_desc') product_desc: string,
