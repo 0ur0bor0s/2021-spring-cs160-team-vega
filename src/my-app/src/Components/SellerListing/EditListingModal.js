@@ -79,13 +79,13 @@ const EditListingModal = ({ children, onClose }) => {
                             </div>
                         </div>
                         <div className={Styles.buttons}>
-                            <div className={Styles.save}>
+                            {/* <div className={Styles.save}> */}
                                 <button onClick={ save } disabled={ loading }>Save</button>
                                 {/* <input type="submit" value="Save" /> */}
-                            </div>
-                            <div className={Styles.cancel}>
+                            {/* </div> */}
+                            {/* <div className={Styles.cancel}> */}
                                 <button onClick={ onClose }>Cancel</button>
-                            </div>
+                            {/* </div> */}
                         </div>
                 </div>
             </div>

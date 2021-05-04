@@ -157,7 +157,7 @@ input, textarea {
     
     /* padding-top: 10%; */
     /* padding-bottom: 3%; */
-    padding-left: 15%;
+    /* padding-left: 15%; */
     /* padding-right: 5px; */
     /* padding-right: 5px; */
 /* 
@@ -184,7 +184,7 @@ input, textarea {
     left: 27%;
   }
 
-.buttons .cancel {
+.buttons.cancel {
     top: 0px;
     left: 0%;
   }
