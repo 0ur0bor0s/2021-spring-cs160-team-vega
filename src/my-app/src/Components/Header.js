@@ -22,7 +22,8 @@ const Header = (props) => {
         </div>
         <div className="gwd-div-1b0h">
           <button id="button_2" className="gwd-button-rr5j gwd-button-1d0r" onClick={() => props.history.push("/login")}>Login</button>
-            <button id="button_3" className="gwd-button-rr5j gwd-button-iigw" onClick={() => props.history.push("/signup")}>Signup</button>
+          <button id="button_3" className="gwd-button-rr5j gwd-button-iigw" onClick={() => props.history.push("/signup")}>Signup</button>
+          <button id="button_4" className="gwd-button-rr5j gwd-button-1234" onClick={() => props.history.push("/mylistings")}>My Listings</button>
         </div>
       </div>
   )

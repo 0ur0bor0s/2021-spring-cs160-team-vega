@@ -4,7 +4,7 @@ import SearchPage from './SearchPage.js';
 import Header from "./Components/Header"
 import { GET_PRODUCTS_BY_PRODUCT_NAME } from './graphql/product';
 import { useQuery } from 'graphql-hooks';
-import AllSellerListingsContainer from './Components/SellerListing/AllSellerListingsContainer';
+// import MyListings from './pages/MyListings.js';
 
 //import ProductInfoContainer from './ProductListing/ProductInfoContainer'
 
