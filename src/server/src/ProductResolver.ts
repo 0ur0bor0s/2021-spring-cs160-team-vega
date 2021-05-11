@@ -2,6 +2,7 @@ import { Arg, Int, Mutation, Query, Resolver } from "type-graphql";
 import { getConnection } from "typeorm";
 import { Product } from "./entity/mongodb/Product";
 import { User } from "./entity/mysql/User";
+import mongoose from 'mongoose';
 // import { UserResolver } from "./UserResolver";
 
 
@@ -80,11 +81,15 @@ export class ProductResolver {
     async getProductByProductId (
         @Arg('_id', () => String) _id: string
     ) {
+
+        var mongoObjectID = mongoose.Types.ObjectId(_id)
+        console.log(mongoObjectID);
+
         const data =  await getConnection("productsDBConnection")
             .getMongoRepository(Product)
             .find({
                 where: {
-                    _id: _id
+                    _id: mongoObjectID
                 }
             });
         console.log(data);
@@ -93,7 +98,6 @@ export class ProductResolver {
 
     @Mutation(() => Boolean) 
     async createNewProduct(
-        @Arg('_id') _id: string,
         @Arg('product_title') product_title: string,
         @Arg('product_desc') product_desc: string,
         @Arg('product_price') product_price: number,
@@ -105,7 +109,6 @@ export class ProductResolver {
         try {
             await productRepository.insert(
                 {
-                    _id, 
                     product_title, 
                     product_desc, 
                     product_price,

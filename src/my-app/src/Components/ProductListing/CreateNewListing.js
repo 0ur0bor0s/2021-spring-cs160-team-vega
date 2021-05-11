@@ -7,14 +7,12 @@ import { gql, useMutation } from '@apollo/client';
 
 const CREATE_NEW_PRODUCT = gql`
         mutation createNewProduct(
-                $_id: String!
                 $product_title: String!
                 $product_desc: String!
                 $product_price: Float!
                 $product_seller_id: Float!
             ) {  
                 createNewProduct(
-                        _id: $_id
                         product_title: $product_title
                         product_desc: $product_desc
                         product_price: $product_price
@@ -25,8 +23,7 @@ const CREATE_NEW_PRODUCT = gql`
 
 
 export function CreateNewListing(props) {
-    const [values, setValues] = useState({
-        _id: uuidv4(), 
+    const [values, setValues] = useState({ 
         title: '',
         price: 0.0,
         description: '',
@@ -61,8 +58,7 @@ export function CreateNewListing(props) {
             <form className= "register-form" onSubmit={e => {
                 e.preventDefault();
                 handleSubmit();
-                CreateNewProduct({variables: { 
-                        _id: values._id, 
+                CreateNewProduct({variables: {  
                         product_title: values.title, 
                         product_price: Number(values.price), 
                         product_desc: values.description, 

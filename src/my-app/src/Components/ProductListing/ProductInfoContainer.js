@@ -10,7 +10,7 @@ import { GET_PRODUCT_BY_PRODUCT_ID_QUERY } from "../../graphql/product";
 
 
 const ProductInfoContainer = () => {
-    const productResponse = GET_PRODUCT_BY_PRODUCT_ID_QUERY('1'); // TEST DATA, SEARCHING ITEM ID 1
+    const productResponse = GET_PRODUCT_BY_PRODUCT_ID_QUERY('609abba14742731a99745e79'); // TEST DATA, SEARCHING ITEM ID 1
     console.log(productResponse.data);
 
 
