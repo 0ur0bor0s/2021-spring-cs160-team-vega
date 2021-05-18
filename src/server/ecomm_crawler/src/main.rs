@@ -243,24 +243,24 @@ fn extract_content(html: &str, webpage: &str) -> Vec<ItemContent> {
                 .filter_map(conv_to_item_content_ebay)
                 .collect::<Vec<ItemContent>>()
         },
-        "Amazon" => {
-            let items = Document::from(&*Document::from(html)
-                .find(Class("s-main-slot"))
-                .next().unwrap()
-                .inner_html());
+        // "Amazon" => {
+        //     let items = Document::from(&*Document::from(html)
+        //         .find(Class("s-main-slot"))
+        //         .next().unwrap()
+        //         .inner_html());
             
             
-            //println!("{}", items.find(Class("s-result-item")).next().unwrap().html());
-            items
-                .find(And(Class("s-result-item"), Class("sg-col-4-of-12")))
-                //.enumerate()
-                //.filter_map(|(i, n)| if i != 0 { Some(n) } else { None })
-                .filter_map(conv_to_item_content_amazon)
-                .collect::<Vec<ItemContent>>()
+        //     //println!("{}", items.find(Class("s-result-item")).next().unwrap().html());
+        //     items
+        //         .find(And(Class("s-result-item"), Class("sg-col-4-of-12")))
+        //         //.enumerate()
+        //         //.filter_map(|(i, n)| if i != 0 { Some(n) } else { None })
+        //         .filter_map(conv_to_item_content_amazon)
+        //         .collect::<Vec<ItemContent>>()
 
 
-            //Vec::new()
-        }
+        //     Vec::new()
+        // }
         _ => {
             println!("Not valid website");
             Vec::new()   
@@ -327,23 +327,23 @@ async fn main() -> std::io::Result<()> {
     }
 
     // Amazon
-    for n in 0..=page_nums {
-        // Request html content
-        let page_url = &*format!("{}{}{}{}{}", "https://www.amazon.com/s?k=", search_item, "&page=", n, "&ref=nb_sb_noss_2");
-        let mut res = client.get(page_url).send().unwrap();
-        println!("Status for {}: {}", page_url, res.status());
+    // for n in 0..=page_nums {
+    //     // Request html content
+    //     let page_url = &*format!("{}{}{}{}{}", "https://www.amazon.com/s?k=", search_item, "&page=", n, "&ref=nb_sb_noss_2");
+    //     let mut res = client.get(page_url).send().unwrap();
+    //     println!("Status for {}: {}", page_url, res.status());
 
-        // Store html and convert from u8 to str primitive
-        let mut body: Vec<u8> = Vec::new();
-        res.read_to_end(&mut body).expect("AMAZON.COM: Unable to read html content");
-        let body_str = String::from_utf8_lossy(&body);
+    //     // Store html and convert from u8 to str primitive
+    //     let mut body: Vec<u8> = Vec::new();
+    //     res.read_to_end(&mut body).expect("AMAZON.COM: Unable to read html content");
+    //     let body_str = String::from_utf8_lossy(&body);
 
-        //println!("{}", body_str);
+    //     //println!("{}", body_str);
 
-        // Extract the contents 
-        let mut page_items: Vec<ItemContent> = extract_content(&body_str, "Amazon");
-        item_vec.append(&mut page_items);
-    }
+    //     // Extract the contents 
+    //     let mut page_items: Vec<ItemContent> = extract_content(&body_str, "Amazon");
+    //     item_vec.append(&mut page_items);
+    // }
 
     // Convert to json and write to file    
     //let payload: String = structs_to_json(&item_vec);
