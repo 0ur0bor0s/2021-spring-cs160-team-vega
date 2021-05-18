@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "graphql-hooks": "^5.1.1"
+  },
+  "devDependencies": {
+    "cypress": "^7.2.0"
+  }
+}

@@ -1,4 +1,9 @@
 src/server/ecomm_crawler/target/
 node_modules/
+<<<<<<< HEAD
 cypress.json
 cypress/
+=======
+cypress/
+cypress.json
+>>>>>>> de360a8621da4a59cb4016010ac28c7a0e27f85f

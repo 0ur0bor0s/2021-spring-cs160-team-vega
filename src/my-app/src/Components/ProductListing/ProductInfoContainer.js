@@ -9,7 +9,7 @@ class ProductInfoContainer extends React.Component {
     state = {
         product: 
             {
-                id: uuidv4(),  //Using uuid as a random generator, will be reading from db later
+                export id: uuidv4(),  //Using uuid as a random generator, will be reading from db later
                 price: "19.99",
                 title: "Lego Set",
                 description : "Hella legos.",
