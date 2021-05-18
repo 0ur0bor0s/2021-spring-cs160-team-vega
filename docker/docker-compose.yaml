@@ -1,0 +1,35 @@
+version: '3.9'
+
+services:
+    app:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        image: vegaaaaa
+        ports:
+            - 3000:3000
+            - 4000:4000
+        depends_on:
+            - mysql_server
+            - mongodb_server
+    
+    mysql_server:
+        image: mysql:latest
+        container_name: mysqldb
+        command: --default-authentication-plugin=mysql_native_password
+        restart: always
+        ports: 
+            - 3306:3306
+        environment:
+            - MYSQL_DATABASE=vega
+            - MYSQL_USER=vega
+            - MYSQL_PASSWORD=vega
+            - MYSQL_ROOT_PASSWORD=vega
+    
+    mongodb_server:
+        image: mongo:latest
+        container_name: mongodb_server
+        environment:
+            - MONGO_INITDB_ROOT_USERNAME=root
+            - MONGO_INITDB_ROOT_PASSWORD=example
+

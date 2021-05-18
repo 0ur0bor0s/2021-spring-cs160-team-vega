@@ -2,7 +2,7 @@
    {
       "name": "usersDBConnection",
       "type": "mysql",
-      "host": "localhost",
+      "host": "mysqldb",
       "port": 3306,
       "username": "vega",
       "password": "vega",
@@ -27,7 +27,7 @@
    {
       "name": "productsDBConnection", 
       "type": "mongodb", 
-      "host": "localhost", 
+      "host": "mongodb_server", 
       "port": 27017, 
       "database": "Products", 
       "synchronize": true, 
